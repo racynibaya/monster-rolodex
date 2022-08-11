@@ -21,3 +21,18 @@ body {
   );
   text-align: center;
 }
+
+.scroll-box {
+  height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 4rem;
+  margin: 0 3rem;
+  margin-bottom: 3rem;
+}
+
+.scroll-box::-webkit-scrollbar {
+  display: none;
+}

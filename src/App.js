@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import Header from './components/header/header.components.jsx';
 import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component.jsx';
+
 import './App.css';
+import Footer from './components/footer/footer.components.jsx';
 
 const App = () => {
   const [searchField, setSearchField] = useState('');
@@ -43,8 +45,10 @@ const App = () => {
         placeHolder='search monster'
         onChangeHandler={onSearchChange}
       />
-
-      <CardList monsters={filteredMonsters} />
+      <div className='scroll-box'>
+        <CardList monsters={filteredMonsters} />
+      </div>
+      <Footer />
     </div>
   );
 };
