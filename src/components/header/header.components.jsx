@@ -1,7 +1,7 @@
 import './header.styles.css';
 
-const Header = () => {
-  return <h1>Monster Rolodex</h1>;
+const Header = ({ title }) => {
+  return <h1>{title}</h1>;
 };
 
 export default Header;
