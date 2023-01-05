@@ -1,7 +1,9 @@
-import { FaGithubSquare } from 'react-icons/fa';
-import { FaFacebookSquare } from 'react-icons/fa';
-import { FaInstagramSquare } from 'react-icons/fa';
-import { FaTwitterSquare } from 'react-icons/fa';
+import {
+  FaGithubSquare,
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaTwitterSquare,
+} from 'react-icons/fa';
 
 import './footer.styles.css';
 
@@ -19,7 +21,7 @@ const Footer = () => {
           </a>
 
           <a
-            href='https://github.com/racynibaya'
+            href='https://www.facebook.com/profile.php?id=100075458500109'
             target='_blank'
             rel='noreferrer'
           >
@@ -27,7 +29,7 @@ const Footer = () => {
           </a>
 
           <a
-            href='https://github.com/racynibaya'
+            href='https://www.instagram.com/racynmundina/'
             target='_blank'
             rel='noreferrer'
           >
@@ -35,7 +37,7 @@ const Footer = () => {
           </a>
 
           <a
-            href='https://github.com/racynibaya'
+            href='https://twitter.com/racynmundina'
             target='_blank'
             rel='noreferrer'
           >
