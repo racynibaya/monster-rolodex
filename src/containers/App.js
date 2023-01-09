@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/header/header.components.jsx';
 import CardList from '../components/card-list/card-list.component.jsx';
@@ -7,41 +7,24 @@ import SearchBox from '../components/search-box/search-box.component.jsx';
 import './App.css';
 import Footer from '../components/footer/footer.components.jsx';
 
-import { setSearchField } from '../actions.js';
+import { setSearchField, requestRobots } from '../actions.js';
 
 const mapStateToProps = state => ({
-  searchField: state.searchField,
+  searchField: state.searchRobots.searchField,
+  robots: state.requestRobots.robots,
+  isPending: state.requestRobots.isPending,
+  error: state.requestRobots.error,
 });
 
 const mapDispatchToProps = dispatch => ({
   onSearchChange: event => dispatch(setSearchField(event.target.value)),
+  onRequestRobots: () => dispatch(requestRobots()),
 });
 
-const App = ({ searchField, onSearchChange }) => {
-  // const [searchField, setSearchField] = useState('');
-  const [monsters, setMonsters] = useState([]);
-
-  const [filteredMonsters, setFilteredMonsters] = useState(monsters);
-
-  // const onSearchChange = event => {
-  //   setSearchField(event.target.value);
-  // };
-
+const App = ({ searchField, onSearchChange, onRequestRobots, robots }) => {
   useEffect(() => {
-    const newFilteredMonsters = monsters.filter(monster =>
-      monster.name.toLowerCase().includes(searchField)
-    );
-
-    setFilteredMonsters(newFilteredMonsters);
-  }, [monsters, searchField]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => {
-        setMonsters(users);
-      });
-  }, []);
+    onRequestRobots();
+  }, [onRequestRobots]);
 
   return (
     <div className='App'>
@@ -55,7 +38,7 @@ const App = ({ searchField, onSearchChange }) => {
       <br />
 
       <div className='scroll-box'>
-        <CardList monsters={filteredMonsters} />
+        <CardList monsters={robots} />
       </div>
       <Footer />
     </div>

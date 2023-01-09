@@ -5,10 +5,20 @@ import App from './containers/App';
 
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 
-import { searchRobots } from './reducers';
-const store = createStore(searchRobots);
+import { searchRobots, requestRobots } from './reducers';
+
+const logger = createLogger();
+
+const rootReducer = combineReducers({ searchRobots, requestRobots });
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, logger)
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
