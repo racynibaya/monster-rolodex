@@ -26,6 +26,10 @@ const App = ({ searchField, onSearchChange, onRequestRobots, robots }) => {
     onRequestRobots();
   }, [onRequestRobots]);
 
+  const filteredRobots = robots.filter(robot =>
+    robot.name.toLowerCase().includes(searchField.toLowerCase())
+  );
+
   return (
     <div className='App'>
       <Header title='Monster Rolodex' />
@@ -38,7 +42,7 @@ const App = ({ searchField, onSearchChange, onRequestRobots, robots }) => {
       <br />
 
       <div className='scroll-box'>
-        <CardList monsters={robots} />
+        <CardList monsters={filteredRobots} />
       </div>
       <Footer />
     </div>
